@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+public class ScientificCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double result = 0.0;
+        
+        System.out.println("Welcome to the Scientific Calculator!");
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+        
+        System.out.print("Enter the operation (+, -, *, /, sqrt, ^, sin, cos, tan): ");
+        String operation = scanner.next();
+        
+        if (operation.equals("sqrt")) {
+            result = Math.sqrt(num1);
+        } else if (operation.equals("sin")) {
+            result = Math.sin(Math.toRadians(num1));
+        } else if (operation.equals("cos")) {
+            result = Math.cos(Math.toRadians(num1));
+        } else if (operation.equals("tan")) {
+            result = Math.tan(Math.toRadians(num1));
+        } else {
+            System.out.print("Enter the second number: ");
+            double num2 = scanner.nextDouble();
+            
+            switch (operation) {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    if (num2 != 0) {
+                        result = num1 / num2;
+                    } else {
+                        System.out.println("Error: Division by zero is not allowed.");
+                        return;
+                    }
+                    break;
+                case "^":
+                    result = Math.pow(num1, num2);
+                    break;
+                default:
+                    System.out.println("Error: Invalid operation.");
+                    return;
+            }
+        }
+        
+        System.out.println("Result: " + result);
+        scanner.close();
+    }
+}
